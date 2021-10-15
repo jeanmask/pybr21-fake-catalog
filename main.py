@@ -21,4 +21,4 @@ async def catalog_list():
 
 @app.get("/{code}")
 async def catalog_retrieve(code):
-    ...
+    return read_data(DATA_DIR / f"{code}.json")
