@@ -25,13 +25,13 @@ def read_data(file_):
     return json.load(open(file_))
 
 
-@app.get("/")
+@app.get("/catalogs")
 async def catalog_list():
     files = DATA_DIR.glob("*.json")
     return [read_data(f_) for f_ in files]
 
 
-@app.get("/{code}")
+@app.get("/catalogs/{code}")
 async def catalog_retrieve(code):
     try:
         return read_data(DATA_DIR / f"{code}.json")
