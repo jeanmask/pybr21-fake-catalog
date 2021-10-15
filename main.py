@@ -3,7 +3,8 @@ import os
 from pathlib import Path
 from random import random
 
-from fastapi import FastAPI
+from fastapi import FastAPI, HTTPException
+from fastapi import status
 from fastapi.responses import JSONResponse
 
 DATA_DIR = Path(os.path.dirname(__file__)) / "data"
@@ -32,4 +33,7 @@ async def catalog_list():
 
 @app.get("/{code}")
 async def catalog_retrieve(code):
-    return read_data(DATA_DIR / f"{code}.json")
+    try:
+        return read_data(DATA_DIR / f"{code}.json")
+    except FileNotFoundError:
+        raise HTTPException(status_code=status.HTTP_404_NOT_FOUND)
