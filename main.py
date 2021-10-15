@@ -17,7 +17,7 @@ app = FastAPI()
 @app.middleware("http")
 async def controlled_fail_middleware(request, call_next):
     if FAIL_RATE / 100 > random():
-        return JSONResponse(status_code=500)
+        return JSONResponse(status_code=status.HTTP_500_INTERNAL_SERVER_ERROR)
     return await call_next(request)
 
 
