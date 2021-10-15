@@ -18,7 +18,7 @@ poetry install
 
 | ENVVAR | Descrição | Valor padrão |
 | ------ | --------- | ------------ |
-| `FAIL_RATE` | Valor de 0 à 100 referente a taxa de falha esperada | 0 |
+| `FAIL_RATE` | Valor de 0 à 100 referente a taxa (%) de falha esperada | 0 |
 
 
 ## Execução
